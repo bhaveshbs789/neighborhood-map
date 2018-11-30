@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Map from './Map'
+import * as FourSquareAPI from './FourSquareAPI'
 
 class App extends Component {
+
+  componentDidMount(){
+  	FourSquareAPI.searchVenue({
+  		near:'Chicago,IL',
+  		query:'burger',
+  		limit: 10
+  	}).then(results => console.log(results))
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Map />
       </div>
     );
   }
