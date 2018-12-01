@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Map from './Map'
-import * as FourSquareAPI from './FourSquareAPI'
+import * as SquareAPI from './SquareAPI'
 
 class App extends Component {
 
   componentDidMount(){
-  	FourSquareAPI.searchVenue({
+  	SquareAPI.searchVenue({
   		near:'Chicago,IL',
-  		query:'burger',
+  		query:'tacos',
   		limit: 10
   	}).then(results => console.log(results))
+
+  	SquareAPI.getVenueDetails("50dbf6b3e4b08766dcc9f835")
+  	.then(result => console.log(result))
+
+  	SquareAPI.getVenuePhoto("50dbf6b3e4b08766dcc9f835")
+  	.then(result => console.log(result))
   }
 
   render() {
